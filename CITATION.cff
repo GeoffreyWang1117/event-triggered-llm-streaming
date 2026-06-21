@@ -1,0 +1,32 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite both the paper and the archived release."
+title: "Event-Triggered LLM Invocation in Streaming Systems"
+authors:
+  - family-names: Wang
+    given-names: Zhaohui
+    affiliation: "University of Southern California"
+    orcid: "https://orcid.org/0009-0006-1187-1903"
+version: "1.0.0"
+date-released: "2026-06-21"
+license: MIT
+repository-code: "https://github.com/GeoffreyWang1117/event-triggered-llm-streaming"
+doi: "10.5281/zenodo.20783298"
+keywords:
+  - event-triggered systems
+  - LLM invocation
+  - sequential decision-making
+  - uncertainty calibration
+  - streaming inference
+preferred-citation:
+  type: conference-paper
+  title: "Uncertainty-Aware Sequential Decision Rules for Event-Triggered LLM Invocation in Streaming Systems"
+  authors:
+    - family-names: Wang
+      given-names: Zhaohui
+      orcid: "https://orcid.org/0009-0006-1187-1903"
+  collection-title: "Machine Learning and Knowledge Discovery in Databases (ECML PKDD 2026)"
+  collection-type: proceedings
+  publisher:
+    name: "Springer"
+  year: 2026
+  notes: "Research Track"

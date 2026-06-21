@@ -5,8 +5,15 @@ scipy>=1.11
 pandas>=2.0
 scikit-learn>=1.3
 
-# LLM Integration
+# LLM Integration (cloud + local backends; keys via env vars only)
 openai>=1.0
+httpx>=0.24
+python-dotenv>=1.0
+
+# Mock LLM server (offline reproduction of the diagnosis interface)
+fastapi>=0.100
+uvicorn>=0.23
+pydantic>=2.0
 
 # Configuration
 pyyaml

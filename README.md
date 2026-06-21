@@ -1,6 +1,11 @@
 # Uncertainty-Aware Sequential Decision Rules for Event-Triggered LLM Invocation in Streaming Systems
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.20783298.svg)](https://doi.org/10.5281/zenodo.20783298)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![Conference](https://img.shields.io/badge/ECML%20PKDD-2026-blue.svg)](https://ecmlpkdd.org/2026/)
+
 Code and reproduction artifacts for the ECML PKDD 2026 (Research Track) paper.
+Archived release: **[10.5281/zenodo.20783298](https://doi.org/10.5281/zenodo.20783298)**.
 
 Streaming inference pipelines increasingly pair lightweight **fast models** with
 **Large Language Models (LLMs)** that provide rich semantic understanding at
@@ -68,6 +73,19 @@ Datasets are **not** bundled (license/size). Download separately:
   publisher = {Springer},
   year      = {2026},
   note      = {Research Track}
+}
+```
+
+Or cite the archived code release directly:
+
+```bibtex
+@software{wang2026etllm_code,
+  author    = {Wang, Zhaohui},
+  title     = {Event-Triggered LLM Invocation in Streaming Systems (code release)},
+  year      = {2026},
+  publisher = {Zenodo},
+  doi       = {10.5281/zenodo.20783298},
+  url       = {https://doi.org/10.5281/zenodo.20783298}
 }
 ```
 
