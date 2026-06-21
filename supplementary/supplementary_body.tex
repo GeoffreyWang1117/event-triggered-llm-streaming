@@ -1,0 +1,174 @@
+%% ============================================================
+\section{Proofs}
+\label{app:proofs}
+
+\subsection{Proof of Theorem~1 (Minimum Inter-Event Time)}
+Let $s_t:=\|h_t-\bar{h}\|_Q$ be the scalar trigger signal. Immediately after triggering at $t_k$, $s_{t_k} \le \delta_0$.
+For $t>t_k$, the bounded-increment assumption gives $s_t \le \delta_0 + L_s(t-t_k)$.
+The trigger fires only when $s_t$ exceeds $\delta + \sigma(t-t_k)$, i.e.\ when $(L_s - \sigma)(t-t_k) > \delta-\delta_0$.
+Provided $\sigma < L_s$, this requires $t-t_k > (\delta-\delta_0)/(L_s - \sigma)$; if $\sigma\ge L_s$ the inequality has no solution and no further trigger fires for $t>t_k$, so chattering exclusion holds trivially. (Lipschitz hidden-state dynamics $\|h_{t+1}-h_t\|\le L$ are sufficient for the premise, with $L_s\le\|Q\|^{1/2}L$.) \qed
+
+\subsection{Proof of Theorem~3 (Stationary Regret)}
+Under stationarity, $Z_t = \mathbf{1}[R_t\ge\theta]-\P[R_t\ge\theta]$ satisfies $\E[Z_t]=0$ and $|Z_t|\le 1$.
+By the Azuma--Hoeffding inequality: $\P[|\sum_{t=1}^T Z_t|>\epsilon]\le 2\exp(-\epsilon^2/(2T))$.
+Setting $\epsilon=\sqrt{2T\log T}$ and translating to cumulative cost yields $\mathrm{Regret}(T)\le O(\sqrt{T\log T})$. \qed
+
+\subsection{Proof of Theorem~5 (Calibration-to-Miss-Rate)}
+A missed critical event occurs when the event is critical yet $u_t\le\theta_u$.
+By $\epsilon$-calibration, $\P[\text{critical}\mid u_t{=}u]\le u+\epsilon\le\theta_u+\epsilon$ for every $u\le\theta_u$; averaging this pointwise bound over $\{u\le\theta_u\}$ gives $\P[\text{critical}\mid u_t\le\theta_u]\le\theta_u+\epsilon$.
+Hence the joint miss probability is $\P[\text{critical},\,u_t\le\theta_u]=\P[\text{critical}\mid u_t\le\theta_u]\,\P[u_t\le\theta_u]\le(\theta_u+\epsilon)\,\P[u_t\le\theta_u]\le\theta_u+\epsilon$.
+Dividing by $p=\P[\text{critical}]$ yields the conditional miss rate $\P[u_t\le\theta_u\mid\text{critical}]\le(\theta_u+\epsilon)/p$; since it is a probability it also satisfies the trivial clamp $\le\min\{1,(\theta_u+\epsilon)/p\}$. \qed
+
+%% ============================================================
+\section{Experimental Details}
+\label{app:details}
+
+\paragraph{CMAPSS.}
+FD001: 100/100 engines, 1 operating condition, 1 fault mode.
+FD002: 260/259 engines, 6 conditions.
+FD003: 100/100 engines, 2 faults.
+FD004: 249/248 engines, 6 conditions, 2 faults.
+RUL clipped at 125.
+
+\paragraph{Hyperparameters.}
+GRU: 64 hidden, 2 layers, 0.1 dropout, sequence length 30.
+Adam optimizer with lr$=$0.001, batch size 64, 100 epochs, early stopping patience 10.
+MC Dropout: $N=20$ forward passes.
+Deep Ensemble: $K=5$ independently trained models.
+
+\paragraph{Trigger parameters.}
+Threshold: anomaly threshold 1.0, uncertainty threshold 0.5.
+CUSUM: slack $k=0.5$, decision threshold $h=5.0$, warmup 30 samples.
+SPRT: $\alpha=0.05$, $\beta=0.10$, warmup 30 samples.
+Optimal Stopping: $c_{\text{LLM}}=1.0$, $\gamma=0.99$.
+OGD: learning rate 0.01, $\theta\in[0.01, 5.0]$.
+All triggers: cooldown 5 steps, evidence window 3 steps.
+
+\paragraph{Risk function variants (Fig.~2 of the main paper).}
+The eight candidate risk functionals are:
+\begin{itemize}
+\item $R_1{=}\alpha a_t + \beta u_t$ (linear, $\alpha{=}\beta{=}1$);
+$R_2{=}a_t$ (anomaly only); $R_3{=}u_t$ (uncertainty only);
+$R_4{=}a_t u_t$ (multiplicative); $R_5{=}\max(a_t,u_t)$.
+\item $R_6{=}0.9\,R_6^{(t-1)} + 0.1(a_t+u_t)$ (EWMA-smoothed).
+\item $R_7$: a learned logistic regressor $\sigma(w^\top z{+}b)$ whose
+feature vector $z$ stacks $a_t$, $u_t$, $\Delta a_t$, $\Delta u_t$, and
+$\Delta t$ (steps since the last trigger); trained on 30\% of data with
+binary critical-event labels.
+\item $R_8$: average of running percentile ranks of $a_t$ and $u_t$
+over a window of 200.
+\end{itemize}
+
+\paragraph{Grounding score.}
+Each LLM diagnosis receives a score in $\{0, 0.25, 0.50, 0.75, 1.0\}$ based on four components: presence of ${\ge}2$ numeric references in the text (+0.25); non-empty key indicators (+0.25); severity consistent with anomaly level (+0.25); and a valid confidence field in $(0.1, 0.99)$ (+0.25), the last being a structured-output sanity check rather than a grounding signal.
+
+%% ============================================================
+\section{Why LLM Invocation Is Not Classical Stopping}
+\label{app:novelty}
+
+A natural question is whether the problem of selective LLM invocation reduces to a standard application of classical stopping theory.
+We argue that the combination of three structural features makes the LLM invocation setting qualitatively different from the problems for which optimal stopping, SPRT, and event-triggered control were originally designed, and that these differences motivate the unified framework developed in the main paper.
+
+\paragraph{Cost asymmetry exceeds classical regimes.}
+In traditional sequential hypothesis testing and event-triggered control, the cost of acting (sending a control signal, declaring a change) is comparable to the cost of observation.
+In contrast, a single LLM inference call is two to four orders of magnitude more expensive than a forward pass of the fast model, both in latency (seconds vs.\ milliseconds) and in monetary cost (API pricing vs.\ local GPU amortization).
+This extreme cost ratio means that even small improvements in invocation efficiency translate to substantial savings, and it shifts the optimal operating point to a regime where classical asymptotic approximations (e.g., Wald's approximation for average sample number) may be conservative.
+Our framework is designed to operate in this high-asymmetry regime, and our empirical evaluation (Sect.~6 of the main paper) confirms that the theoretical bounds remain informative despite the asymmetry.
+
+\paragraph{Triggering signals are learned and miscalibrated.}
+Classical stopping rules assume access to the true data-generating distribution or to sufficient statistics thereof.
+In the LLM invocation setting, the triggering signal (predictive uncertainty from a neural network) is itself a learned quantity that is typically miscalibrated.
+Theorem~5 in the main paper (calibration-to-miss-rate transfer) addresses this gap directly: it quantifies how miscalibration in the fast model's uncertainty propagates to the miss rate of the trigger policy.
+This result has no counterpart in the classical stopping literature, where the observation model is taken as given.
+
+\paragraph{Non-stationary streaming with distribution shift.}
+Classical SPRT and CUSUM assume stationary or piecewise-stationary data.
+Real-world streaming systems exhibit gradual drift and sudden distributional shifts (sensor degradation, concept drift in network traffic, seasonal patterns).
+Corollary~1 in the main paper extends the regret bound to the non-stationary case, and the adaptive threshold mechanism (OGD/LinUCB) provides a practical algorithm for tracking the optimal threshold under shift.
+The empirical results (Table~3(b) of the main paper) show that LinUCB converges 1.4--1.9$\times$ faster than OGD under both drift and shift, demonstrating that context-aware adaptation is essential in this setting.
+
+These three features (extreme cost asymmetry, learned and miscalibrated triggering signals, and non-stationary streaming) are individually present in various subfields but do not co-occur in the problems addressed by any single line of prior work.
+The unified framework in the main paper addresses all three simultaneously, which is the core technical contribution.
+
+
+%% ============================================================
+\section{Reproducibility Checklist}
+\label{app:reproducibility}
+
+We provide the following details to facilitate reproduction of all results reported in the main paper.
+
+\paragraph{Hardware.}
+All experiments were conducted on a workstation with an NVIDIA RTX 4090 GPU (24\,GB VRAM), AMD Ryzen 9 7950X CPU (16 cores), and 64\,GB DDR5 RAM, running Ubuntu 22.04 with CUDA 12.1 and PyTorch 2.1.
+
+\paragraph{Runtime.}
+\begin{itemize}
+\item Fast model training (GRU, per CMAPSS subset): 3--8 minutes (100 epochs with early stopping).
+\item MC Dropout inference ($N{=}20$ passes, full test set): $<$1 minute.
+\item Deep Ensemble training ($K{=}5$ models): 15--40 minutes per subset.
+\item Trigger sweep (20 thresholds $\times$ 6 triggers $\times$ 5 seeds): 2--4 hours.
+\item Real LLM calls (MiniMax-M2.5, 1{,}600 diagnoses): $\sim$6.5 hours (rate-limited by API).
+\item Local LLM calls (Llama-3.1-8B via Ollama): $\sim$2 hours.
+\item Total wall-clock time for all experiments: $\sim$12 hours.
+\end{itemize}
+
+\paragraph{Random seeds.}
+All experiments use 5 random seeds (42, 43, 44, 45, 46) unless otherwise stated.
+The regret analysis (Table~4 of the main paper) uses 10 seeds (42--51) for the Friedman test.
+Results are reported as mean $\pm$ standard deviation across seeds.
+
+\paragraph{LLM API details.}
+\begin{itemize}
+\item Cloud LLM: MiniMax-M2.5, accessed via the MiniMax API (March 2026).
+\item Local LLM: Llama-3.1-8B-Instruct (Q4\_K\_M quantization), served via Ollama 0.3.x.
+\item Structured output: JSON mode with schema enforcement; 100\% parse success rate.
+\item Temperature: 0.3 for both models.
+\item Maximum output tokens: 512.
+\end{itemize}
+
+\paragraph{Hyperparameter grids.}
+Key search ranges:
+\begin{itemize}
+\item Threshold $\theta$: 20 values log-spaced in $[0.01, 10.0]$.
+\item CUSUM slack $k$: $\{0.1, 0.25, 0.5, 1.0\}$; decision threshold $h$: $\{2, 5, 10, 20\}$.
+\item OGD learning rate: $\{0.001, 0.005, 0.01, 0.05\}$.
+\item LinUCB exploration $\alpha$: $\{0.1, 0.5, 1.0, 2.0\}$.
+\item Cost ratio $c_\text{LLM}/c_\text{miss}$: swept over $\{0.0001, \ldots, 1.0\}$.
+\end{itemize}
+
+\paragraph{Datasets.}
+\begin{itemize}
+\item NASA C-MAPSS: publicly available from the NASA Prognostics Data Repository. FD001--FD004, 14 sensor features after standard normalization, RUL clipped at 125.
+\item CIC-IDS2017: publicly available from the Canadian Institute for Cybersecurity. 252{,}456 network flows, 37 features after preprocessing, 16.9\% attack ratio.
+\end{itemize}
+
+\paragraph{Code structure.}
+The submitted code is organized as follows:
+\begin{itemize}
+\item \texttt{src/models/fast/}: Fast models (GRU, ensemble, MC Dropout).
+\item \texttt{src/triggers/}: All trigger implementations (threshold, CUSUM, SPRT, optimal stopping, Bayesian, adaptive, composite).
+\item \texttt{src/models/llm/}: LLM client and grounding evaluation.
+\item \texttt{experiments/ecml\_pkdd/}: Scripts reproducing each table and figure. The regret values in Table~4 of the main paper use the standard 5-seed protocol; the script \texttt{exp1\_\allowbreak statistical\_\allowbreak tests.py} re-runs the regret analysis on a dedicated 10-seed set (seeds 42--51) for statistical power and writes \texttt{statistical\_\allowbreak tests.json}, reporting the Friedman test ($\chi^2{=}47.6$, $p{=}4.3{\times}10^{-9}$, $n{=}10$ seeds, 6 triggers) and Bonferroni-corrected pairwise $t$-tests.
+\item \texttt{configs/}: Hyperparameter configurations.
+\end{itemize}
+
+%% ============================================================
+\section{Limitations}
+\label{app:limitations}
+
+We identify three principal limitations of this work.
+
+\paragraph{Regret bounds are not tight.}
+Theorem~3 establishes $O(\sqrt{T\log T})$ regret under stationarity, matching the standard rate for bounded martingale difference sequences.
+However, this bound may not be tight for the specific structure of LLM invocation costs: the binary nature of the trigger decision and the known form of the risk functional could be exploited to obtain $O(\sqrt{T})$ or even $O(\log T)$ bounds under additional assumptions.
+Closing this gap, or proving a matching lower bound, is an open problem.
+
+\paragraph{Theoretical assumptions hold approximately.}
+The empirical verification in Sect.~5 of the main paper confirms that the assumptions (Lipschitz dynamics, submartingale risk, stationarity) hold approximately but not exactly on real data.
+In particular, the submartingale condition has $p=0.20$ under a one-sided $t$-test (not significant at $\alpha=0.05$), and the log-normal density fit is approximate.
+While the practical consequences are minor (the theoretical bounds remain informative, as demonstrated by the inter-event time ratios and regret exponents), a fully distribution-free analysis that does not require these assumptions would strengthen the framework.
+
+\paragraph{No RL-based or transformer-based trigger explored.}
+The baselines include classical triggers, a RouteLLM-style router, and a contextual bandit (LinUCB), but do not include a reinforcement learning policy (e.g., PPO or DQN trained to maximize a reward combining invocation cost and detection accuracy) or a transformer-based trigger that could capture long-range temporal dependencies.
+We made this choice deliberately: our focus is on demonstrating that classical sequential decision rules, when properly instantiated with neural uncertainty, already achieve strong empirical performance, and their theoretical guarantees (regret bounds, calibration transfer) would not be available for black-box RL policies.
+Nevertheless, an empirical comparison with RL-based triggers is a natural direction for future work, particularly in settings where the cost structure is complex or the data distribution is highly non-stationary.
+

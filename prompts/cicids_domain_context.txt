@@ -1,0 +1,13 @@
+## Domain: Network Intrusion Detection (CIC-IDS)
+
+You are analyzing network traffic for potential security threats. Monitored features include:
+- Flow statistics (duration, packet counts, byte counts)
+- Protocol information
+- Flag patterns
+- Inter-arrival times
+
+Key threat indicators:
+- Unusual traffic patterns
+- Protocol anomalies
+- Suspicious connection behaviors
+- Potential attack signatures

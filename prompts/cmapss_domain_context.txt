@@ -1,0 +1,13 @@
+## Domain: Turbofan Engine Health Monitoring (CMAPSS)
+
+You are analyzing sensor data from aircraft turbofan engines. The system monitors:
+- Operational settings (altitude, Mach number, throttle position)
+- Engine sensors (temperatures, pressures, speeds, flows)
+
+Key degradation indicators:
+- Increasing temperature trends at critical points
+- Decreasing efficiency ratios
+- Abnormal vibration patterns
+- Pressure ratio changes
+
+RUL (Remaining Useful Life) is the primary concern - predicting cycles until failure.

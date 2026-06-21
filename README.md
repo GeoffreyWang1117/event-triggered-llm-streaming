@@ -41,6 +41,10 @@ src/models/llm/    LLM backends + grounding/diagnosis (keys via env vars only)
 experiments/ecml_pkdd/   experiment drivers (see REPRODUCE.md for the table→script map)
 results/ecml_pkdd/       cached result JSON/TeX referenced by the paper
 configs/                 dataset + experiment configs
+prompts/                 exported LLM prompt templates (system + domain contexts)
+supplementary/           proofs (Appendix A) + experimental details (PDF + LaTeX source)
+scripts/scan_artifact.py artifact safety scanner (paths/hostnames/keys; paper §7.6)
+seeds.txt                random seeds (5-seed and 10-seed protocols)
 ```
 
 See [`REPRODUCE.md`](REPRODUCE.md) for the exact script→table/figure mapping.

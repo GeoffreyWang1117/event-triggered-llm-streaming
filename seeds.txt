@@ -1,0 +1,13 @@
+# Random seeds used in all experiments (see Supplementary, Reproducibility Checklist).
+# Standard protocol: 5 seeds.
+42
+43
+44
+45
+46
+# Regret analysis (Friedman test, main-paper Table on regret): 10 seeds.
+47
+48
+49
+50
+51
