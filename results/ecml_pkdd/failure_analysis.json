@@ -1,0 +1,493 @@
+{
+  "total_diagnoses": 1600,
+  "distribution": {
+    "perfect": {
+      "count": 872,
+      "fraction": 0.545
+    },
+    "good": {
+      "count": 615,
+      "fraction": 0.384375
+    },
+    "partial": {
+      "count": 94,
+      "fraction": 0.05875
+    },
+    "poor": {
+      "count": 16,
+      "fraction": 0.01
+    },
+    "failure": {
+      "count": 3,
+      "fraction": 0.001875
+    }
+  },
+  "by_trigger": {
+    "composite": {
+      "count": 400,
+      "mean_grounding": 0.868125,
+      "std_grounding": 0.16379174086320714,
+      "low_grounding_fraction": 0.0625
+    },
+    "cusum": {
+      "count": 400,
+      "mean_grounding": 0.860625,
+      "std_grounding": 0.16894780074034702,
+      "low_grounding_fraction": 0.06
+    },
+    "periodic": {
+      "count": 400,
+      "mean_grounding": 0.855,
+      "std_grounding": 0.17113591090124833,
+      "low_grounding_fraction": 0.0775
+    },
+    "threshold": {
+      "count": 400,
+      "mean_grounding": 0.876875,
+      "std_grounding": 0.16487566338001494,
+      "low_grounding_fraction": 0.0825
+    }
+  },
+  "by_dataset": {
+    "cmapss_FD001": {
+      "count": 400,
+      "mean_grounding": 0.924375,
+      "std_grounding": 0.1348595913348398
+    },
+    "cmapss_FD002": {
+      "count": 400,
+      "mean_grounding": 0.80625,
+      "std_grounding": 0.17842628029525248
+    },
+    "cmapss_FD003": {
+      "count": 400,
+      "mean_grounding": 0.91375,
+      "std_grounding": 0.1394128311885244
+    },
+    "cmapss_FD004": {
+      "count": 400,
+      "mean_grounding": 0.81625,
+      "std_grounding": 0.1758506113154003
+    }
+  },
+  "by_backend": {
+    "minimax_MiniMax-M2.5-highspeed": {
+      "count": 800,
+      "mean_grounding": 0.91125,
+      "std_grounding": 0.15237187240432534,
+      "mean_latency_ms": 13792.086234688759
+    },
+    "ollama_llama3.1_8b": {
+      "count": 800,
+      "mean_grounding": 0.8190625,
+      "std_grounding": 0.16908502622571284,
+      "mean_latency_ms": 4281.885054111481
+    }
+  },
+  "failure_modes": {
+    "total_low_grounding": 113,
+    "fraction_low_grounding": 0.070625,
+    "mode_counts": {
+      "no_numeric_evidence": 97,
+      "severity_mismatch": 99,
+      "no_key_indicators": 19,
+      "unreasonable_confidence": 19
+    },
+    "mode_examples": {
+      "no_numeric_evidence": [
+        {
+          "file": "diag_cmapss_FD001_composite_ollama_llama3.1_8b.json",
+          "timestamp": 95,
+          "anomaly": 0.7090068459510803,
+          "grounding": 0.5,
+          "detail": "no_numeric_evidence"
+        },
+        {
+          "file": "diag_cmapss_FD001_composite_ollama_llama3.1_8b.json",
+          "timestamp": 86,
+          "anomaly": 0.5792384743690491,
+          "grounding": 0.5,
+          "detail": "no_numeric_evidence"
+        },
+        {
+          "file": "diag_cmapss_FD001_cusum_minimax_MiniMax-M2.5-highspeed.json",
+          "timestamp": 76,
+          "anomaly": 0.7636654376983643,
+          "grounding": 0.0,
+          "detail": "no_numeric_evidence"
+        }
+      ],
+      "severity_mismatch": [
+        {
+          "file": "diag_cmapss_FD001_composite_ollama_llama3.1_8b.json",
+          "timestamp": 95,
+          "anomaly": 0.7090068459510803,
+          "grounding": 0.5,
+          "detail": "severity_mismatch(anomaly=0.71,sev=high)"
+        },
+        {
+          "file": "diag_cmapss_FD001_composite_ollama_llama3.1_8b.json",
+          "timestamp": 86,
+          "anomaly": 0.5792384743690491,
+          "grounding": 0.5,
+          "detail": "severity_mismatch(anomaly=0.58,sev=high)"
+        },
+        {
+          "file": "diag_cmapss_FD001_cusum_minimax_MiniMax-M2.5-highspeed.json",
+          "timestamp": 76,
+          "anomaly": 0.7636654376983643,
+          "grounding": 0.0,
+          "detail": "severity_mismatch(anomaly=0.76,sev=unknown)"
+        }
+      ],
+      "no_key_indicators": [
+        {
+          "file": "diag_cmapss_FD001_cusum_minimax_MiniMax-M2.5-highspeed.json",
+          "timestamp": 76,
+          "anomaly": 0.7636654376983643,
+          "grounding": 0.0,
+          "detail": "no_key_indicators"
+        },
+        {
+          "file": "diag_cmapss_FD002_composite_minimax_MiniMax-M2.5-highspeed.json",
+          "timestamp": 144,
+          "anomaly": 2.221317768096924,
+          "grounding": 0.0,
+          "detail": "no_key_indicators"
+        },
+        {
+          "file": "diag_cmapss_FD002_cusum_minimax_MiniMax-M2.5-highspeed.json",
+          "timestamp": 47,
+          "anomaly": 6.309191703796387,
+          "grounding": 0.25,
+          "detail": "no_key_indicators"
+        }
+      ],
+      "unreasonable_confidence": [
+        {
+          "file": "diag_cmapss_FD001_cusum_minimax_MiniMax-M2.5-highspeed.json",
+          "timestamp": 76,
+          "anomaly": 0.7636654376983643,
+          "grounding": 0.0,
+          "detail": "unreasonable_confidence(0.00)"
+        },
+        {
+          "file": "diag_cmapss_FD002_composite_minimax_MiniMax-M2.5-highspeed.json",
+          "timestamp": 144,
+          "anomaly": 2.221317768096924,
+          "grounding": 0.0,
+          "detail": "unreasonable_confidence(0.00)"
+        },
+        {
+          "file": "diag_cmapss_FD002_cusum_minimax_MiniMax-M2.5-highspeed.json",
+          "timestamp": 47,
+          "anomaly": 6.309191703796387,
+          "grounding": 0.25,
+          "detail": "unreasonable_confidence(0.00)"
+        }
+      ]
+    }
+  },
+  "safety_critical_cases": [
+    {
+      "file": "diag_cmapss_FD002_composite_minimax_MiniMax-M2.5-highspeed.json",
+      "dataset": "cmapss_FD002",
+      "timestamp": 96,
+      "anomaly": 6.473060131072998,
+      "severity_reported": "medium",
+      "grounding": 0.75,
+      "diagnosis_snippet": "Transient sensor/operational anomaly detected with residual model impact. Historical data shows significant deviation at t-8 (operational settings shifted dramatically: op1=0\u21921, op2=0.002\u21920.738, op3=0",
+      "risk": "HIGH - LLM underestimates severity"
+    },
+    {
+      "file": "diag_cmapss_FD002_composite_minimax_MiniMax-M2.5-highspeed.json",
+      "dataset": "cmapss_FD002",
+      "timestamp": 111,
+      "anomaly": 3.0185811519622803,
+      "severity_reported": "medium",
+      "grounding": 0.75,
+      "diagnosis_snippet": "Anomalous operating condition detected with significant deviation in fan speed (Nf=0.0028) and turbine outlet temperature (T50=0.0053) relative to high core speed (Nc=0.9939). Current operating settin",
+      "risk": "HIGH - LLM underestimates severity"
+    },
+    {
+      "file": "diag_cmapss_FD002_composite_minimax_MiniMax-M2.5-highspeed.json",
+      "dataset": "cmapss_FD002",
+      "timestamp": 202,
+      "anomaly": 2.1674695014953613,
+      "severity_reported": "medium",
+      "grounding": 0.75,
+      "diagnosis_snippet": "Operating condition shift detected with elevated uncertainty. Engine appears to have transitioned from low-power/degraded operation to high-power setting (op1: 0.595\u21920.833, op2: 0.736\u21921.0, op3: 0\u21921.0)",
+      "risk": "HIGH - LLM underestimates severity"
+    },
+    {
+      "file": "diag_cmapss_FD002_composite_minimax_MiniMax-M2.5-highspeed.json",
+      "dataset": "cmapss_FD002",
+      "timestamp": 9,
+      "anomaly": 6.295453071594238,
+      "severity_reported": "medium",
+      "grounding": 0.75,
+      "diagnosis_snippet": "Anomalous operational state detected - significant deviation from normal degradation trajectory. Current operating conditions (near-zero op1/op2, op3=1.0) represent an unusual low-power/idle state tha",
+      "risk": "HIGH - LLM underestimates severity"
+    },
+    {
+      "file": "diag_cmapss_FD002_composite_minimax_MiniMax-M2.5-highspeed.json",
+      "dataset": "cmapss_FD002",
+      "timestamp": 54,
+      "anomaly": 6.308488368988037,
+      "severity_reported": "medium",
+      "grounding": 0.75,
+      "diagnosis_snippet": "Engine operating in anomalous condition with significant deviation detected. Operational settings indicate low power/shutdown state (op1=0, op2=0) but sensor readings show elevated thermal values (T2=",
+      "risk": "HIGH - LLM underestimates severity"
+    },
+    {
+      "file": "diag_cmapss_FD002_composite_minimax_MiniMax-M2.5-highspeed.json",
+      "dataset": "cmapss_FD002",
+      "timestamp": 69,
+      "anomaly": 6.299879550933838,
+      "severity_reported": "medium",
+      "grounding": 0.75,
+      "diagnosis_snippet": "Elevated anomaly detection with high-speed compressor operation at thermal limits. Current sensor readings show Nf=0.9965 and Nc=0.9947 (both near maximum), combined with elevated temperatures (T24=0.",
+      "risk": "HIGH - LLM underestimates severity"
+    },
+    {
+      "file": "diag_cmapss_FD002_composite_minimax_MiniMax-M2.5-highspeed.json",
+      "dataset": "cmapss_FD002",
+      "timestamp": 129,
+      "anomaly": 3.311678647994995,
+      "severity_reported": "medium",
+      "grounding": 0.75,
+      "diagnosis_snippet": "Anomalous operational transient detected with return to baseline. Pattern shows significant deviation at t-8 (elevated op1=0.833, op2=0.998, depressed temperatures T24/T30/T50) followed by return to n",
+      "risk": "HIGH - LLM underestimates severity"
+    },
+    {
+      "file": "diag_cmapss_FD002_composite_minimax_MiniMax-M2.5-highspeed.json",
+      "dataset": "cmapss_FD002",
+      "timestamp": 24,
+      "anomaly": 6.3762288093566895,
+      "severity_reported": "medium",
+      "grounding": 0.75,
+      "diagnosis_snippet": "Elevated temperature anomaly indicative of moderate engine degradation. Temperature sensors (T2, T24, T30, T50) all showing elevated readings relative to operational setpoints, with depressed pressure",
+      "risk": "HIGH - LLM underestimates severity"
+    },
+    {
+      "file": "diag_cmapss_FD002_composite_minimax_MiniMax-M2.5-highspeed.json",
+      "dataset": "cmapss_FD002",
+      "timestamp": 69,
+      "anomaly": 3.3336257934570312,
+      "severity_reported": "medium",
+      "grounding": 0.75,
+      "diagnosis_snippet": "Anomalous operating condition detected with elevated core speed (Nc=0.9951) at maximum operational setting (op3=1.0). Pattern suggests potential high-stress operation or early-stage degradation. Predi",
+      "risk": "HIGH - LLM underestimates severity"
+    },
+    {
+      "file": "diag_cmapss_FD002_composite_minimax_MiniMax-M2.5-highspeed.json",
+      "dataset": "cmapss_FD002",
+      "timestamp": 14,
+      "anomaly": 3.297281503677368,
+      "severity_reported": "medium",
+      "grounding": 0.75,
+      "diagnosis_snippet": "Significant anomaly detected with operational parameter shift and sensor pattern deviation. Core speed (Nc=0.995) elevated relative to fan speed (Nf=0.616) indicates abnormal stress distribution. Temp",
+      "risk": "HIGH - LLM underestimates severity"
+    },
+    {
+      "file": "diag_cmapss_FD002_composite_minimax_MiniMax-M2.5-highspeed.json",
+      "dataset": "cmapss_FD002",
+      "timestamp": 135,
+      "anomaly": 2.2073605060577393,
+      "severity_reported": "medium",
+      "grounding": 0.75,
+      "diagnosis_snippet": "Moderate anomaly detected - abnormal core/fan speed ratio with elevated uncertainty. High core speed (Nc=0.997) coupled with low fan speed (Nf=0.137) indicates potential compressor stall or surge even",
+      "risk": "HIGH - LLM underestimates severity"
+    },
+    {
+      "file": "diag_cmapss_FD002_composite_minimax_MiniMax-M2.5-highspeed.json",
+      "dataset": "cmapss_FD002",
+      "timestamp": 17,
+      "anomaly": 2.2215421199798584,
+      "severity_reported": "medium",
+      "grounding": 0.75,
+      "diagnosis_snippet": "Anomalous operational transition detected - engine operating in degraded condition with significant sensor deviation from expected baseline. Current state resembles prior normal cycles but preceded by",
+      "risk": "HIGH - LLM underestimates severity"
+    },
+    {
+      "file": "diag_cmapss_FD002_composite_minimax_MiniMax-M2.5-highspeed.json",
+      "dataset": "cmapss_FD002",
+      "timestamp": 47,
+      "anomaly": 2.1902756690979004,
+      "severity_reported": "medium",
+      "grounding": 0.75,
+      "diagnosis_snippet": "Elevated anomaly detection with model uncertainty exceeded - sensor patterns show abnormal operational behavior. Core speed (Nc=0.9946) at near-maximum while fan speed (Nf=0.1373) remains low, indicat",
+      "risk": "HIGH - LLM underestimates severity"
+    },
+    {
+      "file": "diag_cmapss_FD002_composite_ollama_llama3.1_8b.json",
+      "dataset": "cmapss_FD002",
+      "timestamp": 51,
+      "anomaly": 6.4913530349731445,
+      "severity_reported": "medium",
+      "grounding": 0.75,
+      "diagnosis_snippet": "High Pressure Turbine (HPT) anomaly",
+      "risk": "HIGH - LLM underestimates severity"
+    },
+    {
+      "file": "diag_cmapss_FD002_composite_ollama_llama3.1_8b.json",
+      "dataset": "cmapss_FD002",
+      "timestamp": 66,
+      "anomaly": 2.2085108757019043,
+      "severity_reported": "medium",
+      "grounding": 0.75,
+      "diagnosis_snippet": "Possible High Pressure Turbine (HPT) imbalance or misalignment",
+      "risk": "HIGH - LLM underestimates severity"
+    },
+    {
+      "file": "diag_cmapss_FD002_composite_ollama_llama3.1_8b.json",
+      "dataset": "cmapss_FD002",
+      "timestamp": 81,
+      "anomaly": 3.02748703956604,
+      "severity_reported": "medium",
+      "grounding": 0.75,
+      "diagnosis_snippet": "High Pressure Turbine (HPT) anomaly",
+      "risk": "HIGH - LLM underestimates severity"
+    },
+    {
+      "file": "diag_cmapss_FD002_composite_ollama_llama3.1_8b.json",
+      "dataset": "cmapss_FD002",
+      "timestamp": 96,
+      "anomaly": 6.473060131072998,
+      "severity_reported": "medium",
+      "grounding": 0.75,
+      "diagnosis_snippet": "High Pressure Turbine (HPT) degradation",
+      "risk": "HIGH - LLM underestimates severity"
+    },
+    {
+      "file": "diag_cmapss_FD002_composite_ollama_llama3.1_8b.json",
+      "dataset": "cmapss_FD002",
+      "timestamp": 141,
+      "anomaly": 6.319788455963135,
+      "severity_reported": "medium",
+      "grounding": 0.75,
+      "diagnosis_snippet": "High Pressure Turbine (HPT) Rotor Imbalance",
+      "risk": "HIGH - LLM underestimates severity"
+    },
+    {
+      "file": "diag_cmapss_FD002_composite_ollama_llama3.1_8b.json",
+      "dataset": "cmapss_FD002",
+      "timestamp": 156,
+      "anomaly": 3.2854199409484863,
+      "severity_reported": "medium",
+      "grounding": 0.75,
+      "diagnosis_snippet": "High Pressure Turbine (HPT) imbalance or fault",
+      "risk": "HIGH - LLM underestimates severity"
+    },
+    {
+      "file": "diag_cmapss_FD002_composite_ollama_llama3.1_8b.json",
+      "dataset": "cmapss_FD002",
+      "timestamp": 171,
+      "anomaly": 3.3260576725006104,
+      "severity_reported": "medium",
+      "grounding": 0.75,
+      "diagnosis_snippet": "High Pressure Turbine (HPT) degradation",
+      "risk": "HIGH - LLM underestimates severity"
+    }
+  ],
+  "representative_failures": [
+    {
+      "dataset": "cmapss_FD001",
+      "trigger": "cusum",
+      "backend": "minimax_MiniMax-M2.5-highspeed",
+      "timestamp": 76,
+      "anomaly": 0.764,
+      "grounding": 0.0,
+      "severity": "unknown",
+      "confidence": 0.0,
+      "failure_modes": [
+        "no_numeric_evidence",
+        "no_key_indicators",
+        "severity_mismatch(anomaly=0.76,sev=unknown)",
+        "unreasonable_confidence(0.00)"
+      ],
+      "diagnosis_snippet": "{\"diagnosis\":\"CUSUM change point detected with elevated anomaly score (0.7637) indicating statistically significant deviation from baseline operationa"
+    },
+    {
+      "dataset": "cmapss_FD002",
+      "trigger": "cusum",
+      "backend": "minimax_MiniMax-M2.5-highspeed",
+      "timestamp": 47,
+      "anomaly": 6.309,
+      "grounding": 0.25,
+      "severity": "unknown",
+      "confidence": 0.0,
+      "failure_modes": [
+        "no_key_indicators",
+        "severity_mismatch(anomaly=6.31,sev=unknown)",
+        "unreasonable_confidence(0.00)"
+      ],
+      "diagnosis_snippet": "{\"diagnosis\":\"Significant regime change detected indicating transition to degraded operating condition. CUSUM algorithm identified structural break at"
+    },
+    {
+      "dataset": "cmapss_FD001",
+      "trigger": "composite",
+      "backend": "ollama_llama3.1_8b",
+      "timestamp": 95,
+      "anomaly": 0.709,
+      "grounding": 0.5,
+      "severity": "high",
+      "confidence": 0.85,
+      "failure_modes": [
+        "no_numeric_evidence",
+        "severity_mismatch(anomaly=0.71,sev=high)"
+      ],
+      "diagnosis_snippet": "High Pressure Turbine (HPT) anomaly"
+    },
+    {
+      "dataset": "cmapss_FD002",
+      "trigger": "periodic",
+      "backend": "ollama_llama3.1_8b",
+      "timestamp": 88,
+      "anomaly": 0,
+      "grounding": 0.5,
+      "severity": "medium",
+      "confidence": 0.85,
+      "failure_modes": [
+        "no_numeric_evidence"
+      ],
+      "diagnosis_snippet": "High Temperature Anomaly in High Pressure Turbine"
+    }
+  ],
+  "fallback_recommendations": [
+    {
+      "strategy": "Severity Cross-Check",
+      "description": "When LLM reports low severity but anomaly_score > 2.0, automatically escalate to high severity or re-query LLM.",
+      "addresses": "severity_mismatch failures",
+      "estimated_coverage": "99 cases"
+    },
+    {
+      "strategy": "Confidence Thresholding",
+      "description": "Reject LLM diagnoses with confidence < 0.1 or > 0.99; fall back to fast model prediction.",
+      "addresses": "unreasonable_confidence failures",
+      "estimated_coverage": "19 cases"
+    },
+    {
+      "strategy": "Evidence Requirement",
+      "description": "Require LLM to cite at least 2 numeric values from sensor data; if not, request re-generation with explicit prompt.",
+      "addresses": "no_numeric_evidence failures",
+      "estimated_coverage": "97 cases"
+    },
+    {
+      "strategy": "Human-in-Loop Escalation",
+      "description": "When grounding < 0.5, flag for human review before acting on diagnosis.",
+      "addresses": "All severe failures",
+      "estimated_coverage": "19 cases"
+    }
+  ],
+  "overall_stats": {
+    "mean_grounding": 0.86515625,
+    "std_grounding": 0.16741595081095917,
+    "median_grounding": 1.0,
+    "min_grounding": 0.0
+  },
+  "latency_grounding_correlation": {
+    "spearman_r": 0.24799675981146588,
+    "p_value": 7.510910450664805e-24
+  }
+}

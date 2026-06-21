@@ -1,0 +1,19 @@
+\begin{table}[t]
+\centering
+\caption{Risk function $R(\mathcal{H}_t)$ ablation on CMAPSS FD001 (5 seeds). AUC: area under Pareto curve (lower=better). Inv.\ Rate at Miss$\leq$5\%: minimum invocation rate achieving $\leq$5\% miss rate.}
+\label{tab:risk_ablation}
+\begin{tabular}{llcccc}
+\toprule
+Variant & Description & AUC$\downarrow$ & Best F1$\uparrow$ & Inv.@Miss$\leq$5\% & Rank \\
+\midrule
+  \textbf{R2_anomaly_only} & Anomaly score only & \textbf{0.0144$\pm$0.0000} & 0.730 & 0.062 & 1 \\
+  R8_quantile & Quantile-based (running) & 0.1552$\pm$0.1790 & 0.292 & 0.322 & 2 \\
+  R4_multiplicative & Anomaly * Uncertainty & 0.2116$\pm$0.3942 & 0.584 & 0.250 & 3 \\
+  R1_linear & Linear: 1.0*a + 1.0*u & 0.2116$\pm$0.3942 & 0.581 & 0.250 & 4 \\
+  R6_ewma & EWMA (gamma=0.9) & 0.2200$\pm$0.3900 & 0.518 & 0.287 & 5 \\
+  R3_uncertainty_only & Uncertainty only & 0.2895$\pm$0.3615 & 0.105 & 0.757 & 6 \\
+  R5_max & max(anomaly, uncertainty) & 0.2895$\pm$0.3615 & 0.105 & 0.757 & 7 \\
+  R7_learned & Learned logistic regresso & 1.0000$\pm$0.0000 & 0.056 & 0.974 & 8 \\
+\bottomrule
+\end{tabular}
+\end{table}

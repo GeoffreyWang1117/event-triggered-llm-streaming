@@ -1,0 +1,36 @@
+\begin{table}[t]
+\centering
+\caption{Representative LLM diagnosis failure cases. Anomaly: fast model anomaly score; Grounding: diagnosis quality (0--1); Failure modes identify which grounding components failed.}
+\label{tab:failure_cases}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{llcccll}
+\toprule
+Dataset & Backend & Anomaly & Grounding & Severity & Failure Mode & Snippet \\
+\midrule
+  cmapss_FD001 & minimax_MiniMax & 0.76 & 0.00 & unknown & no_numeric_evidence, no_key_in & {"diagnosis":"CUSUM change point detected with elevated anom... \\
+  cmapss_FD002 & minimax_MiniMax & 6.31 & 0.25 & unknown & no_key_indicators, severity_mi & {"diagnosis":"Significant regime change detected indicating ... \\
+  cmapss_FD001 & ollama_llama3.1 & 0.71 & 0.50 & high & no_numeric_evidence, severity_ & High Pressure Turbine (HPT) anomaly... \\
+  cmapss_FD002 & ollama_llama3.1 & 0.00 & 0.50 & medium & no_numeric_evidence & High Temperature Anomaly in High Pressure Turbine... \\
+\bottomrule
+\end{tabular}%
+}
+\end{table}
+
+
+\begin{table}[t]
+\centering
+\caption{Failure mode distribution and proposed fallback strategies.}
+\label{tab:fallback_strategies}
+\begin{tabular}{lcp{6cm}}
+\toprule
+Failure Mode & Count & Fallback Strategy \\
+\midrule
+  severity_mismatch & 99 & When LLM reports low severity but anomaly_score > 2.0, automatically escalate to... \\
+  unreasonable_confidence & 19 & Reject LLM diagnoses with confidence < 0.1 or > 0.99; fall back to fast model pr... \\
+  no_numeric_evidence & 97 & Require LLM to cite at least 2 numeric values from sensor data; if not, request ... \\
+  All severe & N/A & When grounding < 0.5, flag for human review before acting on diagnosis.... \\
+  \midrule
+  Safety-critical (severity underestimate) & 20 & Auto-escalate when anomaly $> 2.0$ \\
+\bottomrule
+\end{tabular}
+\end{table}

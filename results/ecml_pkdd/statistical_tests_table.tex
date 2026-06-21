@@ -1,0 +1,71 @@
+% ==========================================================
+% Table: Regret analysis with bootstrap CIs (10 seeds)
+% ==========================================================
+\begin{table}[t]
+\centering
+\caption{Regret analysis across trigger mechanisms (10 seeds). 95\% bootstrap confidence intervals in brackets. Friedman test: $\chi^2=47.6$, $p=0.0000$.}
+\label{tab:regret-statistical}
+\small
+\begin{tabular}{lcccc}
+\toprule
+Trigger & Total Regret & 95\% CI & $\alpha$ (exponent) & 95\% CI \\
+\midrule
+  threshold & -5617.2 & [-5998.2, -5070.4] & 0.000 & [0.000, 0.000] \\
+  cusum & -7288.9 & [-7670.2, -6741.8] & 0.000 & [0.000, 0.000] \\
+  sprt & -7108.9 & [-7490.2, -6561.8] & 0.000 & [0.000, 0.000] \\
+  optimal\_stopping & -5616.5 & [-6005.6, -5061.9] & 0.000 & [0.000, 0.000] \\
+  adaptive\_ogd & -5616.9 & [-5998.2, -5069.8] & 0.000 & [0.000, 0.000] \\
+  bayesian & -7422.9 & [-7804.2, -6875.8] & 0.000 & [0.000, 0.000] \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+% ==========================================================
+% Table: Pairwise paired t-tests (Bonferroni-corrected)
+% ==========================================================
+\begin{table}[t]
+\centering
+\caption{Pairwise paired $t$-tests for total regret (Bonferroni-corrected). $^{*}p<0.05$, $^{**}p<0.01$, $^{***}p<0.001$.}
+\label{tab:pairwise-regret}
+\small
+\begin{tabular}{llcccc}
+\toprule
+Trigger A & Trigger B & $t$ & $p_{\mathrm{Bonf}}$ & Cohen's $d$ & Effect \\
+\midrule
+  adaptive\_ogd & bayesian & inf & 0.0000*** & 2.22 & large \\
+  cusum & adaptive\_ogd & -inf & 0.0000*** & -2.06 & large \\
+  cusum & bayesian & inf & 0.0000*** & 0.16 & negligible \\
+  cusum & optimal\_stopping & -186.33 & 0.0000*** & -2.04 & large \\
+  cusum & sprt & -inf & 0.0000*** & -0.22 & small \\
+  optimal\_stopping & adaptive\_ogd & 0.04 & 1.0000 & 0.00 & negligible \\
+  optimal\_stopping & bayesian & 201.26 & 0.0000*** & 2.21 & large \\
+  sprt & adaptive\_ogd & -inf & 0.0000*** & -1.83 & large \\
+  sprt & bayesian & inf & 0.0000*** & 0.39 & small \\
+  sprt & optimal\_stopping & -166.27 & 0.0000*** & -1.82 & large \\
+  threshold & adaptive\_ogd & -1.00 & 1.0000 & -0.00 & negligible \\
+  threshold & bayesian & 6019.00 & 0.0000*** & 2.22 & large \\
+  threshold & cusum & 5572.33 & 0.0000*** & 2.06 & large \\
+  threshold & optimal\_stopping & -0.08 & 1.0000 & -0.00 & negligible \\
+  threshold & sprt & 4972.33 & 0.0000*** & 1.83 & large \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+% ==========================================================
+% Table: LLM backend comparison (ollama vs minimax)
+% ==========================================================
+\begin{table}[t]
+\centering
+\caption{Comparison of LLM backends across CMAPSS datasets (Mann-Whitney $U$ test).}
+\label{tab:llm-backend}
+\small
+\begin{tabular}{lccccc}
+\toprule
+Metric & Ollama & MiniMax & $U$ & $p$ & Cohen's $d$ \\
+\midrule
+  Grounding & 0.819 & 0.911 & 39 & 0.0008*** & 1.42 \\
+  MAE & 40.762 & 29.124 & 224 & 0.0003*** & -1.25 \\
+  Latency (ms) & 4282 & 13792 & 0 & 0.0000*** & 21.13 \\
+\bottomrule
+\end{tabular}
+\end{table}

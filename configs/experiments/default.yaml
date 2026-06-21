@@ -1,0 +1,118 @@
+# Default experiment configuration
+
+experiment:
+  name: semantic_diagnosis_event_triggered
+  description: "Event-triggered semantic diagnosis with Edge-LLM cooperation"
+
+# Dataset configuration
+data:
+  cmapss:
+    path: data/cmapss
+    subsets: [FD001, FD002, FD003, FD004]
+    seq_length: 30
+    max_rul: 125
+    selected_sensors: [2, 3, 4, 7, 8, 9, 11, 12, 13, 14, 15, 17, 20, 21]
+
+  cicids:
+    path: data/cicids
+    version: "2017"
+    sample_ratio: 0.1  # Large dataset, sample for experiments
+
+  geolife:
+    path: data/geolife
+    min_trajectory_length: 100
+
+# Fast model configurations
+models:
+  hmm:
+    n_states: 5
+    covariance_type: diag
+    n_iter: 100
+
+  gru:
+    hidden_size: 64
+    n_layers: 2
+    dropout: 0.1
+    learning_rate: 0.001
+    epochs: 100
+    batch_size: 32
+
+  tcn:
+    n_channels: [32, 32, 32]
+    kernel_size: 3
+    dropout: 0.1
+
+  transformer:
+    d_model: 64
+    n_heads: 4
+    n_layers: 2
+    learning_rate: 0.0001
+
+# Trigger configurations
+triggers:
+  threshold:
+    anomaly_threshold: 2.0
+    uncertainty_threshold: 0.5
+    cooldown_steps: 10
+
+  cusum:
+    slack: 0.5
+    threshold: 5.0
+    warmup_samples: 50
+    cooldown_steps: 20
+
+  sprt:
+    alpha: 0.05
+    beta: 0.10
+    warmup_samples: 50
+    cooldown_steps: 20
+
+  optimal_stopping:
+    llm_cost: 1.0
+    risk_weight: 0.1
+    risk_threshold: 2.0
+    cooldown_steps: 20
+
+  composite:
+    mode: weighted
+    weights: [0.3, 0.4, 0.3]
+    confidence_threshold: 0.6
+
+# LLM configuration
+llm:
+  model_name: "meta-llama/Llama-3.1-8B-Instruct"
+  max_tokens: 1024
+  temperature: 0.3
+  use_vllm: true
+
+# Edge-Host communication
+communication:
+  protocol: zmq
+  host_address: "tcp://100.127.104.50:5555"
+  edge_port: 5556
+  timeout_ms: 5000
+
+# Training settings
+training:
+  val_split: 0.1
+  patience: 10
+  save_best: true
+  log_interval: 100
+
+# Evaluation settings
+evaluation:
+  metrics:
+    - mae
+    - rmse
+    - score
+    - llm_rate
+    - latency
+  save_predictions: true
+  save_diagnoses: true
+
+# System settings
+system:
+  seed: 42
+  device: cuda
+  num_workers: 4
+  results_dir: results

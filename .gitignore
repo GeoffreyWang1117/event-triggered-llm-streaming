@@ -1,0 +1,21 @@
+# data (download separately — see README)
+data/
+*.csv
+*.parquet
+
+# secrets / local env — never commit
+.env
+*.key
+secrets*
+
+# python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+
+# scratch
+*.log
+.DS_Store
+.ipynb_checkpoints/

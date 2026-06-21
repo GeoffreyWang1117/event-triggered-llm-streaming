@@ -1,0 +1,692 @@
+{
+  "per_seed": {
+    "42": {
+      "lipschitz": {
+        "L_max": 12.923943191766739,
+        "L_99": 5.821514630317678,
+        "L_95": 0.28800956159830093,
+        "L_mean": 0.25619081901968277,
+        "L_std": 1.1938162980278828,
+        "n_increments": 12996,
+        "ks_test_exponential": {
+          "statistic": 0.3345098574584596,
+          "p_value": 0.0
+        },
+        "bounded_fraction_2x_L95": 0.969067405355494,
+        "verdict": "Partially Supported"
+      },
+      "submartingale": {
+        "h1_abnormal": {
+          "mean_increment": 0.01758627711205697,
+          "std_increment": 0.11638033842580202,
+          "fraction_positive": 0.5577156743620899,
+          "n_samples": 823,
+          "t_statistic": 4.332416540081329,
+          "p_value_one_sided": 8.286218010760777e-06,
+          "verdict": "Supported"
+        },
+        "h0_normal": {
+          "mean_increment": 0.17965128100722363,
+          "std_increment": 1.2483641074476082,
+          "fraction_positive": 0.5284646348476135,
+          "n_samples": 12173,
+          "t_statistic": 15.877057464978689,
+          "p_value": 3.344514596564568e-56
+        }
+      },
+      "monotone": {
+        "bin_means": {
+          "0-10": 43.64080967903137,
+          "10-20": 43.455180699063334,
+          "20-30": 43.237548307180404,
+          "30-40": 43.05038551740719,
+          "40-50": 42.92570074974445,
+          "50-60": 42.82827422519525,
+          "60-70": 42.76389622080385,
+          "70-80": 42.724524204308786,
+          "80-90": 42.681824571529376,
+          "90-100": 42.6687273427548
+        },
+        "spearman_r": -0.6559011850439894,
+        "spearman_p": 0.0,
+        "monotone_fraction": 1.0,
+        "verdict": "Supported",
+        "note": "Negative Spearman r means risk increases as RUL decreases (expected)"
+      },
+      "continuous_density": {
+        "H0_normal": {
+          "n_samples": 12243,
+          "mean": 42.35538077163831,
+          "std": 2.153577198886322,
+          "skewness": -8.720717523127242,
+          "kurtosis": 80.23613632470571,
+          "ks_normal": {
+            "statistic": 0.45852814385919766,
+            "p_value": 0.0
+          },
+          "ks_lognormal": {
+            "statistic": 0.4809863897562213,
+            "p_value": 0.0
+          },
+          "shapiro_wilk": {
+            "statistic": 0.1632985684157121,
+            "p_value": 1.1218674848742659e-91
+          },
+          "best_fit": "normal"
+        },
+        "H1_abnormal": {
+          "n_samples": 853,
+          "mean": 43.105563446372784,
+          "std": 0.24926047908490326,
+          "skewness": 0.16659006324524658,
+          "kurtosis": -0.49982041556518464,
+          "ks_normal": {
+            "statistic": 0.042372203228139727,
+            "p_value": 0.09084609177228598
+          },
+          "ks_lognormal": {
+            "statistic": 0.12555260043316308,
+            "p_value": 3.524255494210108e-12
+          },
+          "shapiro_wilk": {
+            "statistic": 0.9923704205175652,
+            "p_value": 0.0002247500256300754
+          },
+          "best_fit": "normal"
+        },
+        "h0_vs_h1": {
+          "ks_statistic": 0.7797115254701135,
+          "p_value": 0.0,
+          "distributions_differ": true
+        },
+        "verdict": "Partially Supported"
+      },
+      "stationarity": {
+        "H0_normal": {
+          "first_half_mean": 42.34236949245012,
+          "second_half_mean": 42.36838992549504,
+          "ks_test": {
+            "statistic": 0.017752227604679902,
+            "p_value": 0.2837026873803682
+          },
+          "mann_whitney": {
+            "statistic": 18799687.5,
+            "p_value": 0.7461238100899489
+          },
+          "stationary": true
+        },
+        "H1_abnormal": {
+          "first_half_mean": 43.077194720156875,
+          "second_half_mean": 43.13386573529076,
+          "ks_test": {
+            "statistic": 0.1203230310826709,
+            "p_value": 0.00388675900687448
+          },
+          "mann_whitney": {
+            "statistic": 79920.0,
+            "p_value": 0.002171175357786755
+          },
+          "stationary": false
+        },
+        "verdict": "Supported"
+      }
+    },
+    "43": {
+      "lipschitz": {
+        "L_max": 11.73476853966713,
+        "L_99": 4.9934333130717246,
+        "L_95": 0.3066511005163193,
+        "L_mean": 0.24357909484711673,
+        "L_std": 1.0715397884781321,
+        "n_increments": 12996,
+        "ks_test_exponential": {
+          "statistic": 0.3123457341771305,
+          "p_value": 0.0
+        },
+        "bounded_fraction_2x_L95": 0.9686057248384118,
+        "verdict": "Partially Supported"
+      },
+      "submartingale": {
+        "h1_abnormal": {
+          "mean_increment": 0.017586286382281185,
+          "std_increment": 0.11638036477690714,
+          "fraction_positive": 0.5577156743620899,
+          "n_samples": 823,
+          "t_statistic": 4.3324178428646025,
+          "p_value_one_sided": 8.286170063182178e-06,
+          "verdict": "Supported"
+        },
+        "h0_normal": {
+          "mean_increment": 0.1671721867578615,
+          "std_increment": 1.1226239238157067,
+          "fraction_positive": 0.5328185328185329,
+          "n_samples": 12173,
+          "t_statistic": 16.4289838321801,
+          "p_value": 5.240077052662105e-60
+        }
+      },
+      "monotone": {
+        "bin_means": {
+          "0-10": 41.65883183479309,
+          "10-20": 41.47320333461172,
+          "20-30": 41.25557053923607,
+          "30-40": 41.0684079304052,
+          "40-50": 40.94372291889107,
+          "50-60": 40.84629648838235,
+          "60-70": 40.78191813174172,
+          "70-80": 40.74254603511481,
+          "80-90": 40.699846475583605,
+          "90-100": 40.686749412622675
+        },
+        "spearman_r": -0.6558991024432844,
+        "spearman_p": 0.0,
+        "monotone_fraction": 1.0,
+        "verdict": "Supported",
+        "note": "Negative Spearman r means risk increases as RUL decreases (expected)"
+      },
+      "continuous_density": {
+        "H0_normal": {
+          "n_samples": 12243,
+          "mean": 40.371456155025385,
+          "std": 2.0304296415185448,
+          "skewness": -8.444352011466501,
+          "kurtosis": 75.94046044692529,
+          "ks_normal": {
+            "statistic": 0.45049638621733246,
+            "p_value": 0.0
+          },
+          "ks_lognormal": {
+            "statistic": 0.47253296056138505,
+            "p_value": 0.0
+          },
+          "shapiro_wilk": {
+            "statistic": 0.17864404275403512,
+            "p_value": 3.006679408478797e-91
+          },
+          "best_fit": "normal"
+        },
+        "H1_abnormal": {
+          "n_samples": 853,
+          "mean": 41.123585757763415,
+          "std": 0.2492607198452401,
+          "skewness": 0.16658646833879842,
+          "kurtosis": -0.4998178950819123,
+          "ks_normal": {
+            "statistic": 0.04236880590069769,
+            "p_value": 0.09089093905814338
+          },
+          "ks_lognormal": {
+            "statistic": 0.12555347283083862,
+            "p_value": 3.5229275699639463e-12
+          },
+          "shapiro_wilk": {
+            "statistic": 0.9923705788169349,
+            "p_value": 0.00022479316634204212
+          },
+          "best_fit": "normal"
+        },
+        "h0_vs_h1": {
+          "ks_statistic": 0.7802832807588498,
+          "p_value": 0.0,
+          "distributions_differ": true
+        },
+        "verdict": "Partially Supported"
+      },
+      "stationarity": {
+        "H0_normal": {
+          "first_half_mean": 40.358844065603876,
+          "second_half_mean": 40.384066184321206,
+          "ks_test": {
+            "statistic": 0.016003037085977275,
+            "p_value": 0.40643149643804743
+          },
+          "mann_whitney": {
+            "statistic": 18767293.0,
+            "p_value": 0.8743896692024433
+          },
+          "stationary": true
+        },
+        "H1_abnormal": {
+          "first_half_mean": 41.09521692606485,
+          "second_half_mean": 41.15188815191702,
+          "ks_test": {
+            "statistic": 0.1203230310826709,
+            "p_value": 0.00388675900687448
+          },
+          "mann_whitney": {
+            "statistic": 79920.0,
+            "p_value": 0.002171175357786755
+          },
+          "stationary": false
+        },
+        "verdict": "Supported"
+      }
+    },
+    "44": {
+      "lipschitz": {
+        "L_max": 10.933422714471817,
+        "L_99": 4.67683667242527,
+        "L_95": 0.30728238821029663,
+        "L_mean": 0.2346811915597904,
+        "L_std": 0.9996686011845634,
+        "n_increments": 12996,
+        "ks_test_exponential": {
+          "statistic": 0.2981688266588448,
+          "p_value": 0.0
+        },
+        "bounded_fraction_2x_L95": 0.9684518313327177,
+        "verdict": "Partially Supported"
+      },
+      "submartingale": {
+        "h1_abnormal": {
+          "mean_increment": 0.017586235396047988,
+          "std_increment": 0.11638025970874281,
+          "fraction_positive": 0.5577156743620899,
+          "n_samples": 823,
+          "t_statistic": 4.332409193599065,
+          "p_value_one_sided": 8.286488395331584e-06,
+          "verdict": "Supported"
+        },
+        "h0_normal": {
+          "mean_increment": 0.15779989393002436,
+          "std_increment": 1.0487433164630355,
+          "fraction_positive": 0.5336400230017251,
+          "n_samples": 12173,
+          "t_statistic": 16.600396935257017,
+          "p_value": 3.25454001516422e-61
+        }
+      },
+      "monotone": {
+        "bin_means": {
+          "0-10": 39.5904022693634,
+          "10-20": 39.40477407593088,
+          "20-30": 39.187142251729966,
+          "30-40": 38.999979759313135,
+          "40-50": 38.87529538796659,
+          "50-60": 38.77786896403494,
+          "60-70": 38.71349091775975,
+          "70-80": 38.674119108184065,
+          "80-90": 38.63141981964229,
+          "90-100": 38.618322623585236
+        },
+        "spearman_r": -0.6558994943199554,
+        "spearman_p": 0.0,
+        "monotone_fraction": 1.0,
+        "verdict": "Supported",
+        "note": "Negative Spearman r means risk increases as RUL decreases (expected)"
+      },
+      "continuous_density": {
+        "H0_normal": {
+          "n_samples": 12243,
+          "mean": 38.31433903607465,
+          "std": 1.9250324724695265,
+          "skewness": -8.353892183061848,
+          "kurtosis": 74.51565148280595,
+          "ks_normal": {
+            "statistic": 0.44717647296664065,
+            "p_value": 0.0
+          },
+          "ks_lognormal": {
+            "statistic": 0.470944604332121,
+            "p_value": 0.0
+          },
+          "shapiro_wilk": {
+            "statistic": 0.18425542548912588,
+            "p_value": 4.329005219491715e-91
+          },
+          "best_fit": "normal"
+        },
+        "H1_abnormal": {
+          "n_samples": 853,
+          "mean": 39.05515763324283,
+          "std": 0.24926011839324133,
+          "skewness": 0.16658690704801793,
+          "kurtosis": -0.49981775101047043,
+          "ks_normal": {
+            "statistic": 0.04236891680192034,
+            "p_value": 0.09088947478573028
+          },
+          "ks_lognormal": {
+            "statistic": 0.12555301739775904,
+            "p_value": 3.5236207483100784e-12
+          },
+          "shapiro_wilk": {
+            "statistic": 0.9923705892685136,
+            "p_value": 0.00022479601497364535
+          },
+          "best_fit": "normal"
+        },
+        "h0_vs_h1": {
+          "ks_statistic": 0.7803649600858122,
+          "p_value": 0.0,
+          "distributions_differ": true
+        },
+        "verdict": "Partially Supported"
+      },
+      "stationarity": {
+        "H0_normal": {
+          "first_half_mean": 38.301960456042174,
+          "second_half_mean": 38.32671559412411,
+          "ks_test": {
+            "statistic": 0.016003037085977275,
+            "p_value": 0.40643149643804743
+          },
+          "mann_whitney": {
+            "statistic": 18761375.5,
+            "p_value": 0.8982895442539843
+          },
+          "stationary": true
+        },
+        "H1_abnormal": {
+          "first_half_mean": 39.026788599964036,
+          "second_half_mean": 39.08346022850456,
+          "ks_test": {
+            "statistic": 0.1203230310826709,
+            "p_value": 0.00388675900687448
+          },
+          "mann_whitney": {
+            "statistic": 79920.0,
+            "p_value": 0.002171175357786755
+          },
+          "stationary": false
+        },
+        "verdict": "Supported"
+      }
+    },
+    "45": {
+      "lipschitz": {
+        "L_max": 7.263988733291626,
+        "L_99": 2.2644115805625864,
+        "L_95": 1.155072458088398,
+        "L_mean": 0.37121608500876546,
+        "L_std": 0.45455639688726995,
+        "n_increments": 12996,
+        "ks_test_exponential": {
+          "statistic": 0.0431039788729175,
+          "p_value": 2.029186848350843e-21
+        },
+        "bounded_fraction_2x_L95": 0.9906124961526623,
+        "verdict": "Supported"
+      },
+      "submartingale": {
+        "h1_abnormal": {
+          "mean_increment": -0.04043661573967407,
+          "std_increment": 0.14036688610587084,
+          "fraction_positive": 0.3888213851761847,
+          "n_samples": 823,
+          "t_statistic": -8.259353307427686,
+          "p_value_one_sided": 0.9999999999999997,
+          "verdict": "Not Supported"
+        },
+        "h0_normal": {
+          "mean_increment": 0.03199042856894023,
+          "std_increment": 0.6043532449832785,
+          "fraction_positive": 0.5109668939456173,
+          "n_samples": 12173,
+          "t_statistic": 5.839964024761159,
+          "p_value": 5.3546058945686865e-09
+        }
+      },
+      "monotone": {
+        "bin_means": {
+          "0-10": 2.9191425919532774,
+          "10-20": 2.809120607130306,
+          "20-30": 2.8206622684001923,
+          "30-40": 3.0125568312703424,
+          "40-50": 3.5620426206212294,
+          "50-60": 4.672444176228567,
+          "60-70": 6.531886444311237,
+          "70-80": 8.664907950976932,
+          "80-90": 11.029512193847875,
+          "90-100": 12.570974861647908
+        },
+        "spearman_r": 0.845390339137247,
+        "spearman_p": 0.0,
+        "monotone_fraction": 0.1111111111111111,
+        "verdict": "Not Supported",
+        "note": "Negative Spearman r means risk increases as RUL decreases (expected)"
+      },
+      "continuous_density": {
+        "H0_normal": {
+          "n_samples": 12243,
+          "mean": 14.05461520100452,
+          "std": 4.497842622140316,
+          "skewness": -0.8203212115189816,
+          "kurtosis": -0.4094967288778881,
+          "ks_normal": {
+            "statistic": 0.11941965155202894,
+            "p_value": 1.3514834400085475e-152
+          },
+          "ks_lognormal": {
+            "statistic": 0.20040548820968906,
+            "p_value": 0.0
+          },
+          "shapiro_wilk": {
+            "statistic": 0.9100673952849736,
+            "p_value": 1.9273707532428215e-47
+          },
+          "best_fit": "normal"
+        },
+        "H1_abnormal": {
+          "n_samples": 853,
+          "mean": 3.126926211406589,
+          "std": 0.6808562295571581,
+          "skewness": 3.4816932986397173,
+          "kurtosis": 15.972755130825757,
+          "ks_normal": {
+            "statistic": 0.23563578304435073,
+            "p_value": 3.812460843020908e-42
+          },
+          "ks_lognormal": {
+            "statistic": 0.18582957085404153,
+            "p_value": 2.937349076890761e-26
+          },
+          "shapiro_wilk": {
+            "statistic": 0.631764777561648,
+            "p_value": 3.320037513090204e-39
+          },
+          "best_fit": "lognormal"
+        },
+        "h0_vs_h1": {
+          "ks_statistic": 0.9174703653900274,
+          "p_value": 0.0,
+          "distributions_differ": true
+        },
+        "verdict": "Partially Supported"
+      },
+      "stationarity": {
+        "H0_normal": {
+          "first_half_mean": 14.072033913905589,
+          "second_half_mean": 14.037199333368545,
+          "ks_test": {
+            "statistic": 0.031019864508519547,
+            "p_value": 0.005323573573252553
+          },
+          "mann_whitney": {
+            "statistic": 18593860.0,
+            "p_value": 0.46608285855812237
+          },
+          "stationary": false
+        },
+        "H1_abnormal": {
+          "first_half_mean": 3.2625005685247728,
+          "second_half_mean": 2.991669358637629,
+          "ks_test": {
+            "statistic": 0.15989928642895626,
+            "p_value": 3.222419940820808e-05
+          },
+          "mann_whitney": {
+            "statistic": 102991.0,
+            "p_value": 0.0008192840244319909
+          },
+          "stationary": false
+        },
+        "verdict": "Partially Supported"
+      }
+    },
+    "46": {
+      "lipschitz": {
+        "L_max": 11.395830780267715,
+        "L_99": 4.73761996179819,
+        "L_95": 0.2828297019004822,
+        "L_mean": 0.2310202933799747,
+        "L_std": 1.0303063598529818,
+        "n_increments": 12996,
+        "ks_test_exponential": {
+          "statistic": 0.29908072338914427,
+          "p_value": 0.0
+        },
+        "bounded_fraction_2x_L95": 0.9704524469067405,
+        "verdict": "Partially Supported"
+      },
+      "submartingale": {
+        "h1_abnormal": {
+          "mean_increment": 0.017586295652505406,
+          "std_increment": 0.11638037952628381,
+          "fraction_positive": 0.5577156743620899,
+          "n_samples": 823,
+          "t_statistic": 4.33241957753753,
+          "p_value_one_sided": 8.286106220766844e-06,
+          "verdict": "Supported"
+        },
+        "h0_normal": {
+          "mean_increment": 0.15295775012032592,
+          "std_increment": 1.0797897254577853,
+          "fraction_positive": 0.5294504230674444,
+          "n_samples": 12173,
+          "t_statistic": 15.628355010575886,
+          "p_value": 1.5792613903525392e-54
+        }
+      },
+      "monotone": {
+        "bin_means": {
+          "0-10": 38.808766984939574,
+          "10-20": 38.62313698247536,
+          "20-30": 38.40550404906273,
+          "30-40": 38.21834112789439,
+          "40-50": 38.093656114841764,
+          "50-60": 37.9962295470224,
+          "60-70": 37.93185131570593,
+          "70-80": 37.89247895825516,
+          "80-90": 37.849779391630754,
+          "90-100": 37.83668199605894
+        },
+        "spearman_r": -0.655903023117699,
+        "spearman_p": 0.0,
+        "monotone_fraction": 1.0,
+        "verdict": "Supported",
+        "note": "Negative Spearman r means risk increases as RUL decreases (expected)"
+      },
+      "continuous_density": {
+        "H0_normal": {
+          "n_samples": 12243,
+          "mean": 37.570062484714825,
+          "std": 1.8212853255753658,
+          "skewness": -8.799401555318571,
+          "kurtosis": 81.8022033926705,
+          "ks_normal": {
+            "statistic": 0.44870205110672035,
+            "p_value": 0.0
+          },
+          "ks_lognormal": {
+            "statistic": 0.47679375008599634,
+            "p_value": 0.0
+          },
+          "shapiro_wilk": {
+            "statistic": 0.16964915905304134,
+            "p_value": 1.6837957843512726e-91
+          },
+          "best_fit": "normal"
+        },
+        "H1_abnormal": {
+          "n_samples": 853,
+          "mean": 38.27351910207783,
+          "std": 0.24925981232744887,
+          "skewness": 0.16659530018292004,
+          "kurtosis": -0.49980253913984196,
+          "ks_normal": {
+            "statistic": 0.042369918836301035,
+            "p_value": 0.09087624542744765
+          },
+          "ks_lognormal": {
+            "statistic": 0.1255520587952048,
+            "p_value": 3.525080198129758e-12
+          },
+          "shapiro_wilk": {
+            "statistic": 0.9923706097165415,
+            "p_value": 0.00022480158829762744
+          },
+          "best_fit": "normal"
+        },
+        "h0_vs_h1": {
+          "ks_statistic": 0.7799565634510004,
+          "p_value": 0.0,
+          "distributions_differ": true
+        },
+        "verdict": "Partially Supported"
+      },
+      "stationarity": {
+        "H0_normal": {
+          "first_half_mean": 37.55908959207144,
+          "second_half_mean": 37.58103358498764,
+          "ks_test": {
+            "statistic": 0.017261818064011402,
+            "p_value": 0.3150609122962935
+          },
+          "mann_whitney": {
+            "statistic": 18794547.0,
+            "p_value": 0.7661111580247592
+          },
+          "stationary": true
+        },
+        "H1_abnormal": {
+          "first_half_mean": 38.245150450039915,
+          "second_half_mean": 38.301821316991536,
+          "ks_test": {
+            "statistic": 0.1203230310826709,
+            "p_value": 0.00388675900687448
+          },
+          "mann_whitney": {
+            "statistic": 79920.0,
+            "p_value": 0.002171175357786755
+          },
+          "stationary": false
+        },
+        "verdict": "Supported"
+      }
+    }
+  },
+  "aggregated": {
+    "lipschitz": {
+      "L99_mean": 4.49876323163509,
+      "L_mean_mean": 0.26733749676306606,
+      "ks_statistic_mean": 0.25744182411129934,
+      "ks_pvalue_mean": 4.058373696701686e-22,
+      "bounded_frac_mean": 0.9734379809172052,
+      "verdict": "Partially Supported"
+    },
+    "submartingale": {
+      "mean_increment_mean": 0.005981695760643497,
+      "fraction_positive_mean": 0.5239368165249088,
+      "t_stat_mean": 1.814061969330968,
+      "p_value_mean": 0.20000662899653793,
+      "verdict": "Supported"
+    },
+    "monotone": {
+      "spearman_r_mean": -0.35564249315753627,
+      "spearman_p_mean": 0.0,
+      "monotone_fraction_mean": 0.8222222222222222,
+      "verdict": "Supported"
+    },
+    "continuous_density": {
+      "ks_stat_mean": 0.384864541140384,
+      "ks_pval_mean": 2.702966880017095e-153,
+      "verdict": "Partially Supported"
+    },
+    "stationarity": {
+      "ks_stat_mean": 0.01960799686983308,
+      "ks_pval_mean": 0.28339003322520184,
+      "verdict": "Supported"
+    }
+  }
+}

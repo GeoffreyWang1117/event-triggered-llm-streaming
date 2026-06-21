@@ -1,0 +1,26 @@
+\begin{table}[t]
+\centering
+\caption{Comparison with stronger baselines on CMAPSS FD001 (5 seeds). $c_{\text{LLM}}=1$, $c_{\text{miss}}=10$. Best result per metric in \textbf{bold}.}
+\label{tab:stronger_baselines}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{llccccc}
+\toprule
+Category & Method & Inv.\ Rate$\downarrow$ & Miss Rate$\downarrow$ & F1$\uparrow$ & Total Cost$\downarrow$ & Type \\
+\midrule
+  Ours & threshold & 0.200 & 0.801 & 0.042 & 5080.0$\pm$0.0 & Ours \\
+   & cusum & 0.072 & 0.801 & 0.097 & 3408.0$\pm$0.0 &  \\
+   & optimal_stopping & 0.199 & 0.807 & 0.041 & 5084.0$\pm$19.6 &  \\
+  \midrule
+  Non-adaptive & periodic & 0.050 & 0.951 & 0.031 & 3575.0$\pm$0.0 & Non-adaptive \\
+   & random & 0.049 & 0.947 & 0.034 & 3551.4$\pm$53.8 &  \\
+   & fixed_percentile_95 & 0.093 & 0.385 & 0.249 & 2399.4$\pm$960.3 &  \\
+   & fixed_percentile_99 & 0.034 & 0.661 & 0.279 & 2473.2$\pm$531.4 &  \\
+  \midrule
+  Learning & routellm & 0.097 & 0.162 & 0.327 & 1761.6$\pm$7.0 & Learning \\
+   & linucb & 0.089 & 0.032 & \textbf{0.403} & \textbf{1266.4$\pm$19.5} &  \\
+  \midrule
+  Hybrid & speculative & 1.000 & \textbf{0.000} & 0.046 & 13096.0$\pm$0.0 & Hybrid \\
+  \bottomrule
+\end{tabular}%
+}
+\end{table}
