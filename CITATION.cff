@@ -10,7 +10,7 @@ version: "1.1.0"
 date-released: "2026-06-21"
 license: MIT
 repository-code: "https://github.com/GeoffreyWang1117/event-triggered-llm-streaming"
-doi: "10.5281/zenodo.20783298"
+doi: "10.5281/zenodo.20783549"
 keywords:
   - event-triggered systems
   - LLM invocation
